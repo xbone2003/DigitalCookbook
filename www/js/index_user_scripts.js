@@ -24,6 +24,32 @@
          activate_page("#mainpage"); 
          return false;
     });
+     
+     
+     
+     
+    var iabRef = null;
+
+    // Inject our custom JavaScript into the InAppBrowser window
+    //
+     
+  
+    function iabClose(event) {
+         iabRef.removeEventListener('exit', iabClose);
+    }
+     
+     
+     
+     
+     
+        /* button  #takeAwayBtn */
+    $(document).on("click", "#takeAwayBtn", function(evt)
+    {
+         iabRef = window.open('http://www.shawacademy.com', '_blank', 'location=yes');
+         iabRef.addEventListener('loadstop', replaceHeaderImage);
+         iabRef.addEventListener('exit', iabClose);
+         return false;
+    });
     
     }
  document.addEventListener("app.Ready", register_event_handlers, false);
